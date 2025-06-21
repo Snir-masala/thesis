@@ -1,0 +1,36 @@
+CTFEA - CT-based finite element analyses (אנליזה מבוססת סריקה ממכונות שיקוף מסוג סיטי)
+In the mentioned research - two groups:
+Group 1 was composed of 5 MBD patients who presented with a pathologic femoral fracture and had a scan of their femurs just prior to fracture.
+Group 2 was composed of 45 MBD patients who were scheduled for a prophylactic surgery because of an impending femoral fracture
+prepared models of CTFEA for both groups patiants and both femurs. 
+took into accont in the calculation- 
+loaded with a hip contact force representing stance position loading accounting for the patient's weight and femur anatomy 
+the ratio between the absolute maximum principal strain in the vicinity of the tumor and the typical median strain in the region of the tumor of healthy bones 
+
+The models used to simulate if the bone is strong enough to stand with the load when walking or standing. 
+Ct shows better the tissue density in bone and how the lession affect the bone. 
+
+The FEM simulates how the bone would behave under different physiological loads, such as walking or standing, by modeling how the bone bends, stretches, or compresses. It considers factors like the patient’s body weight, bone geometry, and the spatial distribution of metastatic lesions.
+
+
+question - 
+1. the ct scans are tagged ? hoe can we measure it ? 
+2. diffrent ct scans machines has diffrent qulity - this is can affect the results ? 
+3. the CTFEA valid for 6 month, but actually the lession can be changed during this time, so the time is factor that need to be took into account. (models to predict where the lession can be grow to ) 
+4. focus on the bone, but what about measuring the dynamic of the patiant? a patient’s overall health, muscle mass, and history of fractures could influence their actual fracture risk? 
+5. The strain fold ratio threshold (1.48) was based on data from only 5 patients in the study, which may not represent the broader population of patients with metastatic bone disease. The small sample size could limit the generalizability of the findings.
+6. All the procedure is dynamic and depandes on time - it might be change after some time, the CTFEA will be change ? 
+
+
+
+Summary of Suggestions:
+Standardize CT protocols and introduce calibration phantoms.
+Incorporate time-based tumor progression modeling to reflect dynamic changes in the bone and tumor.
+Combine biomechanical analysis with clinical factors for more comprehensive predictions.
+Simulate a wider range of loading scenarios, such as falls or heavy lifting.
+Develop automated and cloud-based solutions to make CTFEA more practical in clinical settings.
+Conduct larger trials to refine the strain fold ratio and validate CTFEA across different populations.
+Integrate data from other imaging modalities to account for tumor activity.
+Use machine learning to further improve specificity and reduce unnecessary surgeries.
+Enhance risk communication tools to help clinicians easily interpret CTFEA results and support decision-making.
+By addressing these issues, CTFEA could become a more reliable and widely used tool for assessing fracture risk in patients with metastatic bone disease.
