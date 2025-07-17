@@ -1,6 +1,4 @@
-# write an app that do the following:
-# streamlit for UI
-# each calcultaion in diffrent function
+
 # Target function : QALY ( show also graphs in plotly )
 # Suffer integral ( Show also graph in plotly )
 # parameters to take into account in the calculation:
@@ -8,10 +6,8 @@
 # Physical - weight, muscle strength, bone strength
 # Activity - to quantify from articles
 # Cancer characteristics - pace , direction, the bone strength, SFR - Zohar
-# the final product - these are the parameters, this is the way inserted to the model , what parameter has highest impact
-# we want to help doctors, the one that add data on peppole with this cancer. to emphsis the assumptions on things we don't know
-#
-# all the app should be on git and its environment should be declerd properly
+
+
 import streamlit as st
 import numpy as np
 
