@@ -2,7 +2,7 @@ import os
 import pandas as pd
 import numpy as np
 import argparse
-from utils.project_enums import BoneQuality, MuscleStrength, DiseaseStage, Complications
+from utils.project_enums import BoneQuality, MuscleStrength, DiseaseStage, Complications, SurgeryStatus
 
 
 def setup() -> argparse.Namespace:
@@ -53,15 +53,31 @@ def init_patients_dataset(n_patients: int, n_days: int) -> pd.DataFrame:
         mortality_risk = np.random.uniform(0.005, 0.02)
         decision = 'Wait'
         notes = ''
-        surgery_day = init_surgery_day(n_days)
+
+        # simulate surgery
+        is_surgery = np.random.choice(SurgeryStatus, p=[0.95, 0.05])
+        surgery_day = np.random.randint(1, n_days) if is_surgery else 0
 
         for day in range(1, n_days + 1):
+
+            # Surgery and complications
+            if day == surgery_day:
+                surgery_status = 'Yes'
+                decision = 'Surgery'
+                notes = 'Surgery done today'
+            else:
+                decision = 'Wait'
+                notes = ''
+
+            # if surgery done it may cause issues - worse health but may be better/worse in x days ?
+            if surgery_status == 'Yes' and day in range(surgery_day, n_days + 1):
+                complications = np.random.choice(Complications, p=[0.85, 0.15])
 
             # Bone quality - can be better ?
             if np.random.rand() < 0.05:
                 bone_quality = np.random.choice(BoneQuality)
 
-            # Frailty - bone quality and Fratility are the same ? depends on each other ?
+            # Frailty - bone quality and Fragility are the same ? depends on each other ?
             frailty_level = vary_value(frailty_level, 0, 1)
 
             # Muscle strength - can be better ?
@@ -73,20 +89,6 @@ def init_patients_dataset(n_patients: int, n_days: int) -> pd.DataFrame:
                 idx = disease_progression.value
                 if idx < len(DiseaseStage) - 1:
                     disease_progression = DiseaseStage[idx + 1]
-
-            # Surgery and complications
-            if day == surgery_day and surgery_status == 'No':
-                if np.random.rand() < 0.2:
-                    surgery_status = 'Yes'
-                    decision = 'Surgery'
-                    notes = 'Surgery done today'
-                else:
-                    decision = 'Wait'
-                    notes = ''
-
-            # if surgery done it may cause issues - worse health but may be better/worse in x days ?
-            if surgery_status == 'Yes' and day in range(5, 8):
-                complications = np.random.choice(Complications, p=[0.85, 0.15])
 
             # SFR - how it is changed ?
             sfr_score = vary_value(sfr_score, 0.1, 0.7, 0.02)
